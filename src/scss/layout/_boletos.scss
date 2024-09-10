@@ -1,0 +1,91 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.contenedor-boletos{
+    background-color: v.$verde;
+
+    h3{
+        color: v.$blanco;
+    }
+
+    .boletos{
+        @include m.contenedor;
+        @include m.tablet{
+            @include m.grid(2,5rem)
+        }
+        
+    }
+}
+
+.pase{
+    transition: transform .3s ease-in-out;
+    &:hover{
+        transform: scale(1.1);
+    }
+
+    &-nombre{
+        color: v.$blanco;
+        font-size: 3.6rem;
+        text-align: center;
+        font-weight: 900;
+    }
+
+    &-header,
+    &-footer{
+        p{
+            text-align: center;
+            padding: .5rem;
+            color: v.$blanco;
+            margin: 0;
+        }
+    }
+
+    &-header{
+        background-color: v.$rosa;
+        padding: 1rem;
+        p{
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            padding: 1rem 0;
+        }
+
+    }
+
+
+
+    &-body{
+        background-color: v.$blanco;
+        ul{
+            @include m.resetear-lista;
+
+            li{
+                padding: 2.5rem;
+                border-bottom: 0.1rem solid #e1e1e1;
+            }
+        }
+        
+    }
+
+    &-footer{
+        background-color: v.$blanco;
+        padding: 3rem;
+        P{
+            font-size: 2.8rem;
+            font-weight: 900;
+            background-color: v.$morado;
+            border-radius: 1rem;
+            padding: 1rem 0;
+            cursor: pointer;
+            transition: transform .2s ease-in-out;
+            &:hover{
+                
+                background-color: darken($color: v.$morado, $amount: 20%);
+            }
+            &:active{
+                transform: scale(.9);
+                background-color: darken($color: v.$morado, $amount: 20%);
+            }
+        }
+    }
+}
+

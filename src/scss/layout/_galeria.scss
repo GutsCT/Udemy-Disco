@@ -1,0 +1,86 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.galeria{
+    @include m.contenedor;
+    
+    &-imagenes{
+        cursor: pointer;
+        @include m.grid(1,2rem);
+
+        @include m.telefono{
+            @include m.grid(2,2rem);
+        }
+        @include m.tablet{
+            @include m.grid(3,2rem)
+        }
+        @include m.desktop{
+            @include m.grid(4,2rem)
+        }
+
+        img{
+            object-fit: cover;
+            height: 23rem;
+        }
+    }
+}
+
+.modal{
+    inset: 0;
+    position: fixed;
+    background-color: rgba($color: v.$negro, $alpha: .5);
+    display: grid;
+    place-items: center;
+    //insertar animacion
+    animation: fadeIn ease-in 0.5s;
+
+    &.fade-out{//esto crea el modal-fade-out en css
+        animation: fadeOut ease-in 0.5s;
+    }
+
+    img{
+        @include m.contenedor;
+        max-width: 100rem;
+    }
+
+}
+
+.btn-cerrar{
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: v.$blanco;
+    color: v.$negro;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    place-items: center;
+
+    &:hover{
+        transition: transform .3s ease-in-out;
+        transform: scale(.9);
+    }
+
+}
+
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut{
+    0%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
